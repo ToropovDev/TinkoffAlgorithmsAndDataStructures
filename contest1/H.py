@@ -1,12 +1,11 @@
 # H-Зеркальный код
 
-# в процессе
 
-def h(s):
+def h(lets):
     result = ""
     counter = []
-    for el in sorted(set(s)):
-        counter += [[el, s.count(el)]]
+    for el in sorted(set(lets)):
+        counter += [[el, lets.count(el)]]
 
     for pair in counter:
         result += pair[0] * (pair[1] // 2)
@@ -22,10 +21,4 @@ def h(s):
 n = int(input())
 s = input()
 
-print(h(s))
-
-assert h("AAB") == "ABA"
-assert h("QAZQAZ") == "AQZZQA"
-assert h("QAZQAZS") == "AQZSZQA"
-assert h("QAZQAZSA") == "AQZAZQA"
-assert h("AAAAAQQS") == "AAQAQAA"
+print(h(s), end="")
