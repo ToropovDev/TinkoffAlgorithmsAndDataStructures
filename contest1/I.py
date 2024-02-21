@@ -1,32 +1,21 @@
-# I-Что? Да! Пузырек
+n = int(input())
 
-# в процессе
 
 def bubble_sort_iterations(arr):
-    n = len(arr)
-    iterations = 0
-    for i in range(n):
-        had_swaps = False
-        for j in range(n - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                had_swaps = True
-        iterations += 1
-        if not had_swaps:
-            break
-    return iterations
+    if 0 in arr:
+        j = n - arr[::-1].index(0)
+        return arr[:j].count(1) + 1
+    else:
+        return 1
 
 
-n = int(input())
-positions = list(map(int, input().split()))
+positions = [int(num) for num in input().split()]
 
 arr = [0] * n
-result = []
+result = [1] * (n+1)
+result[0] = bubble_sort_iterations(arr)
+for i in range(n-1):
+    arr[positions[i] - 1] = 1
+    result[i+1] = bubble_sort_iterations(arr)
 
-for pos in positions:
-    arr[pos - 1] = 1
-    iterations = bubble_sort_iterations(arr.copy())
-    result.append(iterations)
-
-result.insert(0, bubble_sort_iterations(arr))
 print(*result)

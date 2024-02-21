@@ -2,20 +2,30 @@
 
 # в процессе
 
-n = int(input())
-s = sorted(input())
-counter = dict()
-for c in s:
-    if c not in counter:
-        counter[c] = 0
-    counter[c] += 1
-result = ""
-for let in counter:
-    result += let * (counter[let] // 2)
-    counter[let] -= counter[let] // 2 * 2
+def h(s):
+    result = ""
+    counter = []
+    for el in sorted(set(s)):
+        counter += [[el, s.count(el)]]
 
-counter = sorted([pair for pair in counter.items() if pair[1] != 0])
-if len(counter) == 0:
-    print(result+result[::-1])
-else:
-    print(result+counter[0][0]+result[::-1])
+    for pair in counter:
+        result += pair[0] * (pair[1] // 2)
+        pair[1] %= 2
+
+    counter = [pair for pair in counter if pair[1] != 0]
+    if len(counter) == 0:
+        return result+result[::-1]
+    else:
+        return result+counter[0][0]+result[::-1]
+
+
+n = int(input())
+s = input()
+
+print(h(s))
+
+assert h("AAB") == "ABA"
+assert h("QAZQAZ") == "AQZZQA"
+assert h("QAZQAZS") == "AQZSZQA"
+assert h("QAZQAZSA") == "AQZAZQA"
+assert h("AAAAAQQS") == "AAQAQAA"
