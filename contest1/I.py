@@ -1,21 +1,28 @@
+# I-Что? Да! Пузырек
+
 n = int(input())
+positions = list(map(int, input().split()))
 
-
-def bubble_sort_iterations(arr):
-    if 0 in arr:
-        j = n - arr[::-1].index(0)
-        return arr[:j].count(1) + 1
-    else:
-        return 1
-
-
-positions = [int(num) for num in input().split()]
 
 arr = [0] * n
-result = [1] * (n+1)
-result[0] = bubble_sort_iterations(arr)
-for i in range(n-1):
-    arr[positions[i] - 1] = 1
-    result[i+1] = bubble_sort_iterations(arr)
+result = [1]
+for j in range(n-1):
+    arr[positions[j] - 1] += 1
+    if arr[-1] == 0:
+        result.append(j+2)
+    else:
+        r = 0
+        c = n-1
+        while c > -1 and arr[c] == 1:
+            r += 1
+            c -= 1
+        result.append(j+2-r)
 
+result.append(1)
 print(*result)
+
+# 0 0 0 0 - 1
+# 1 0 0 0 - 2
+# 1 0 1 0 - 3
+# 1 0 1 1 - 2
+# 1 1 1 1 - 1
