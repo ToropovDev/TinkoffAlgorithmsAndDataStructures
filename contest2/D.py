@@ -1,29 +1,28 @@
 # D-Шарики
 
-# надо бы оптимизировать
-
 n = int(input())
+result = 0
 arr = list(map(int, input().split()))
+stack = [arr[0]]
 
-while arr:
-    repeat_ind = [0]
-    last = arr[0]
-    i = 1
+for i in range(1, n + 1):
+    if i < n:
+        x = arr[i]
+        if x == stack[-1]:
+            stack.append(x)
+            continue
 
-    while i < len(arr):
-        ball = arr[i]
-        if last != ball:
-            if len(repeat_ind) >= 3:
-                break
-            repeat_ind.clear()
-        repeat_ind.append(i)
-        last = ball
-        i += 1
+    l = len(stack) - 1
+    while l >= 0 and stack[l] == stack[-1]:
+        l -= 1
+    c = len(stack) - l - 1
 
-    if len(repeat_ind) < 3:
-        break
+    if c >= 3:
+        for j in range(c):
+            stack.pop()
+        result += c
 
-    for i in range(len(repeat_ind)):
-        arr.pop(repeat_ind[0])
+    if i < n:
+        stack.append(arr[i])
 
-print(n - len(arr))
+print(result)
