@@ -1,48 +1,52 @@
+# B-AVL?
+import sys
+
+sys.setrecursionlimit(10**6)
+
+
 class Node:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.l = None
+        self.r = None
 
 
-def check_avl(root):
-    def check_avl_conditions(node):
-        if not node:
-            return True, 0
+def h(node: Node):
+    if node is None:
+        return 0
+    lh = h(node.l)
+    rh = h(node.r)
+    return max(lh, rh) + 1
 
-        l_check, lh = check_avl_conditions(node.left)
-        r_check, rh = check_avl_conditions(node.right)
 
-        current_height = max(lh, rh) + 1
-        height_difference = abs(lh - rh)
+def is_bst(node: Node, min_val, max_val):
+    if node is None:
+        return True
+    if not min_val < node.value < max_val:
+        return False
 
-        check = l_check and r_check and height_difference <= 1
-        is_sorted = (node.left is None or node.left.value < node.value) and \
-                    (node.right is None or node.right.value > node.value)
+    return is_bst(node.l, min_val, node.value) and is_bst(node.r, node.value, max_val)
 
-        return check and is_sorted, current_height
 
-    is_avl, _ = check_avl_conditions(root)
-    return is_avl
+def is_balanced(node: Node):
+    if node is None:
+        return True
+    lh = h(node.l)
+    rh = h(node.r)
+
+    return abs(lh - rh) <= 1 and is_balanced(node.l) and is_balanced(node.r)
 
 
 n, r = map(int, input().split())
+s = [tuple(map(int, input().split())) for i in range(n)]
 
-if n == 0:
-    print(0)
+nodes = [Node(i) for i in range(n)]
+for i, (left, right) in enumerate(s):
+    if left != -1:
+        nodes[i].l = nodes[left]
+    if right != -1:
+        nodes[i].r = nodes[right]
 
-else:
-
-    nodes = [Node(i) for i in range(n)]
-
-    for i in range(n):
-        l, ri = map(int, input().split())
-        if l != -1:
-            nodes[i].left = nodes[l]
-        if ri != -1:
-            nodes[i].right = nodes[ri]
-
-    root = nodes[r]
-
-    result = check_avl(root)
-    print(int(result))
+root = nodes[r]
+result = int(is_bst(root, float('-inf'), float('inf')) and is_balanced(root))
+print(result)

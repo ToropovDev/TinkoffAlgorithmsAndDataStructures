@@ -1,3 +1,5 @@
+# F-Следующий
+
 import random
 
 

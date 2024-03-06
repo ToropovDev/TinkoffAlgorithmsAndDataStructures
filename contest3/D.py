@@ -1,3 +1,5 @@
+# D-Хипуй!
+
 def heap_up(arr, i):
     while i > 0 and arr[(i - 1) // 2] < arr[i]:
         arr[i], arr[(i - 1) // 2] = arr[(i - 1) // 2], arr[i]
