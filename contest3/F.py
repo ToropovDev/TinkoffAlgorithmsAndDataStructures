@@ -3,53 +3,76 @@
 import random
 
 
-class Item:
-    key: int
-    priority: int
-    def __init(self, key, priority):
-        self.key = key
-        self.priority = priority
-        self.l = None
-        self.r = None
+def get_keys_min(node):
+    return node.keysMin if node else 1 << 30
 
 
-def split(t: Item, key, l: Item, r: Item):
-    if not t:
-        l = r = None
-    elif key <= t.key:
-        split(t.l, key, l, t.l)
-        r = t
+class Treap:
+    class TreapNode:
+        def __init__(self, key):
+            self.key = key
+            self.priority = random.randint(0, 10 ** 9)
+            self.keysMin = key
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+        self.root = None
+
+    def update(self, node):
+        if node:
+            node.keysMin = min(node.key, min(get_keys_min(node.left), get_keys_min(node.right)))
+
+    def merge(self, a, b):
+        if not a or not b:
+            return a if a else b
+        if a.priority > b.priority:
+            a.right = self.merge(a.right, b)
+            self.update(a)
+            return a
+        else:
+            b.left = self.merge(a, b.left)
+            self.update(b)
+            return b
+
+    def split(self, t, split_key):
+        if not t:
+            return None, None
+        if t.key < split_key:
+            t.right, b = self.split(t.right, split_key)
+            a = t
+        else:
+            a, t.left = self.split(t.left, split_key)
+            b = t
+        self.update(a)
+        self.update(b)
+        return a, b
+
+    def insert_unique(self, key):
+        t_less, t_greater = self.split(self.root, key)
+        t_equal, t_greater = self.split(t_greater, key + 1)
+        if not t_equal:
+            t_equal = self.TreapNode(key)
+        self.root = self.merge(t_less, self.merge(t_equal, t_greater))
+
+    def next(self, key):
+        t_less, t_not_less = self.split(self.root, key)
+        result = get_keys_min(t_not_less)
+        self.root = self.merge(t_less, t_not_less)
+        return result if result != 1 << 30 else -1
+
+
+treap = Treap()
+
+queries_count = int(input())
+previous_result = 0
+
+for _ in range(queries_count):
+    query_type, key = input().split()
+    key = int(key)
+    if query_type == '+':
+        treap.insert_unique((key + previous_result) % (10 ** 9))
+        previous_result = 0
     else:
-        split(t.r, key, t.r, r)
-        l = t
-
-
-def merge(l: Item, r: Item, t: Item):
-    if not l or not r:
-        t = l if l else r
-    elif l.priority > r.priority:
-        merge(l.r, r, l.r)
-        t = l
-    else:
-        merge(l, r.l, r.l)
-        t = r
-
-
-def GetMin(t: Item):
-    if t is None:
-        return -1
-    if t.l is None:
-        return t.key
-    return GetMin(t.l)
-
-
-def add(i):
-    split(tree, i, L, R)
-    if GetMin(R) != i:
-        merge(l, Item(i, random.randint), tree)
-        merge(tree, R, tree)
-    else:
-        merge(L, R, tree)
-
-
-def next(i):
+        previous_result = treap.next(key)
+        print(previous_result)
