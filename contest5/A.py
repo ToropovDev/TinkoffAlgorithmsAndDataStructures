@@ -1,26 +1,30 @@
-s = input()
-m = int(input())
+# работает, но лучше переписать на c++
 
-p = 10 ** 10
-hashes = [0] * (len(s) + 1)
-pows = [1] + [0] * (len(s))
-
-for i in range(len(s)):
-    hashes[i + 1] = hashes[i] * p + ord(s[i])
-    pows[i + 1] = pows[i] * p
+PRIME = 1000000009
 
 
 def get_hash(l, r):
-    return hashes[r + 1] - hashes[l] * pows[r - l + 1]
+    return hashes[r + 1] - hashes[l] * prime_pows[r - l + 1]
 
 
 def check_substrings(a, b, c, d):
     return get_hash(a, b) == get_hash(c, d)
 
 
+s = input()
+m = int(input())
+
+hashes = [0] * (len(s) + 1)
+prime_pows = [1] * (len(s) + 1)
 res = []
 
-for _ in range(m):
+hashes[0] = 0
+
+for i in range(len(s)):
+    hashes[i + 1] = hashes[i] * PRIME + ord(s[i])
+    prime_pows[i + 1] = prime_pows[i] * PRIME
+
+for i in range(m):
     a, b, c, d = map(int, input().split())
     a -= 1
     b -= 1
@@ -28,5 +32,5 @@ for _ in range(m):
     d -= 1
     res.append("Yes" if check_substrings(a, b, c, d) else "No")
 
-for elem in res:
-    print(elem)
+for r in res:
+    print(r)
