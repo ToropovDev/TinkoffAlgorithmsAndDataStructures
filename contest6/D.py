@@ -23,7 +23,7 @@ def BFS(graph, start):
     q.append(graph.peaks[start])
     while q:
         peak = q.popleft()
-        peak_data = peak.data
+        peak_data = peak.elements
         for i in graph.connect_list[peak_data]:
             if graph.peaks[i].color == 0:
                 graph.peaks[i].color = 1
