@@ -30,4 +30,3 @@ while left < right:
         left = middle + 1
 
 print(left)
-

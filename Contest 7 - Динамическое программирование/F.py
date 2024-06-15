@@ -1,3 +1,6 @@
+# Наибольший квадрат
+
+
 def find_largest_square(n, m, matrix):
     dp = [[0] * m for _ in range(n)]
     max_side = 0

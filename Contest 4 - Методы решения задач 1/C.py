@@ -3,7 +3,6 @@
 n, k = map(int, input().split())
 s = sorted(list(map(int, input().split())))
 
-
 l, r = 0, s[-1] - s[0] + 1
 while l < r:
     mid = (l + r) // 2

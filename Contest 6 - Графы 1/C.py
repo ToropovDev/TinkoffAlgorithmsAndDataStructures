@@ -1,3 +1,6 @@
+# Топологическая сортировка
+
+
 def is_top_sort(n, connect_list, perm):
     peak_degrees = [0] * (n + 1)
 

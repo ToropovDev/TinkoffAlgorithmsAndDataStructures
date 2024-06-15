@@ -1,3 +1,5 @@
+# Упаковка символов
+
 s = input().strip()
 n = len(s)
 packed = [[""] * n for _ in range(n)]

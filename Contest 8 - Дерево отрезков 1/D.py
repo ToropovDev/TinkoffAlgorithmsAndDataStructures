@@ -1,3 +1,4 @@
+# Первый элмент не меньше X
 import sys
 
 class SegmentTree:

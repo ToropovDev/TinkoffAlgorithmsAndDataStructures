@@ -33,4 +33,3 @@ for i in range(n):
     else:
         min_value = s.get_min()
         print(min_value)
-

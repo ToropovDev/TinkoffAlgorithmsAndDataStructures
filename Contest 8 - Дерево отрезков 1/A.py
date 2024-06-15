@@ -1,3 +1,6 @@
+# Чипи-чипи чапа-чапа
+
+
 class SegmentTree:
     def __init__(self, arr):
         self.n = len(arr)

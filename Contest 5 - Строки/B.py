@@ -1,3 +1,6 @@
+# Сравнение подстрок
+
+
 def get_prefix(pattern):
     m = len(pattern)
     pi = [0] * m

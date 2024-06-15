@@ -1,3 +1,4 @@
+# Удаление скобок
 import sys
 
 
@@ -21,7 +22,7 @@ def check():
             (s[i] == '(' and s[j] == ')')
             or (s[i] == '[' and s[j] == ']')
             or (s[i] == '{' and s[j] == '}')
-            )
+    )
 
 
 s = input()

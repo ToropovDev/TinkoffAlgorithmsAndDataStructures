@@ -1,3 +1,4 @@
+# Анаграммы-2
 import sys
 from collections import defaultdict
 from random import randint

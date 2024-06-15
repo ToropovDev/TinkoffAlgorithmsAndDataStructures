@@ -1,3 +1,4 @@
+# Шестерёнки
 from math import gcd
 
 n, k = map(int, input().split())

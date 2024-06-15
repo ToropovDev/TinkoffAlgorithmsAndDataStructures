@@ -39,5 +39,3 @@ max_heap = Heap(arr)
 max_heap.heap_sort()
 
 print(" ".join(map(str, max_heap.heap)))
-
-

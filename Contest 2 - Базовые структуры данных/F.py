@@ -1,4 +1,5 @@
 # F-Астроград
+
 n = int(input())
 d = []
 positions = {}

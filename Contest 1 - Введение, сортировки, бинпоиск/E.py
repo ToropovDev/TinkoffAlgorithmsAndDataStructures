@@ -6,7 +6,7 @@ l = -r
 
 
 def f(x):
-    return a*x*x*x+b*x*x+c*x+d
+    return a * x * x * x + b * x * x + c * x + d
 
 
 while r - l > 1e-12:

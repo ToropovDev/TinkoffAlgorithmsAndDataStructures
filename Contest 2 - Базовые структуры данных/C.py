@@ -1,3 +1,5 @@
+# Постфиксная запись
+
 expr = input().split()
 res = []
 for s in expr:

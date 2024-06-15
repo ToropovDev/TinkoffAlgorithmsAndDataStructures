@@ -1,3 +1,6 @@
+# Платная лестница
+
+
 def get_min_cost(n, cost):
     dp = [0] * n
     dp[0] = cost[0]

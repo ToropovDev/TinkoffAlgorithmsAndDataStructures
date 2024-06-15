@@ -1,3 +1,4 @@
+# Транспортировка
 import heapq
 
 
@@ -53,5 +54,3 @@ for _ in range(m):
 
 result = binary_search(graph, n, max_time)
 print(result)
-
-

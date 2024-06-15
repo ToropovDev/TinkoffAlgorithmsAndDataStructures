@@ -1,3 +1,6 @@
+# Длина максимального подпалиндрома
+
+
 def find_longest_palindrome(s):
     n = len(s)
     dp = [[0] * n for _ in range(n)]

@@ -1,3 +1,4 @@
+# Остовное дерево
 import heapq
 
 
@@ -27,4 +28,3 @@ for _ in range(m):
     graph[e - 1].append((b - 1, w))
 
 print(prim(graph, n))
-

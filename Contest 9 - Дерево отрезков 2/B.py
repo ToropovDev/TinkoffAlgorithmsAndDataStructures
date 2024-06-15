@@ -1,3 +1,6 @@
+# Присваивание, прибавление и сумма
+
+
 class Node:
     def __init__(self):
         self.summa = 0

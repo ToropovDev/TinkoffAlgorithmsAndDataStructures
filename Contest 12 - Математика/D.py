@@ -1,3 +1,5 @@
+# Последняя цифра N!
+
 n = int(input())
 count_2, count_5 = 0, 0
 

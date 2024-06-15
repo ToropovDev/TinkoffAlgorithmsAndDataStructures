@@ -1,3 +1,4 @@
+# Межрегиональная олимпиада
 from bisect import bisect_left
 
 

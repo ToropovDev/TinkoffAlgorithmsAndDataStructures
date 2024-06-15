@@ -1,3 +1,5 @@
+# Offline-семинар
+
 inf = float('inf')
 
 

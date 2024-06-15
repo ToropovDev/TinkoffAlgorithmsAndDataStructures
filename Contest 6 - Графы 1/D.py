@@ -1,3 +1,4 @@
+# Один голодный конь
 from collections import deque
 
 

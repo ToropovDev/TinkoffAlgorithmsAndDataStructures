@@ -1,3 +1,4 @@
+# Теория чисел
 import heapq
 
 max_n = 10 ** 5

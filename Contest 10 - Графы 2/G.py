@@ -1,3 +1,4 @@
+# В поисках утраченного кефира
 import heapq
 
 inf = float('inf')
@@ -46,4 +47,3 @@ if min_path_len == inf:
     print(-1)
 else:
     print(min_path_len)
-

@@ -1,3 +1,4 @@
+# Распил брусьев
 import math
 
 length, num_segments = map(int, input().split())

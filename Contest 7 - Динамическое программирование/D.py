@@ -1,3 +1,5 @@
+# Ход конем - 2
+
 n, m = map(int, input().split())
 
 arr = [[0] * (m + 3) for _ in range(n + 3)]

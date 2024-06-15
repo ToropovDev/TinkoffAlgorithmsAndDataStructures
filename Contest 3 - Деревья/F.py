@@ -1,5 +1,4 @@
 # F-Следующий
-
 import random
 
 

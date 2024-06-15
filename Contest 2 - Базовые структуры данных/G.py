@@ -24,6 +24,5 @@ for i in range(n):
 
     equalize(left, right)
 
-
 for r in result:
     print(r)

@@ -1,3 +1,6 @@
+# Гипотеза Гольдбаха
+
+
 def generate_prime_nums(limit):
     primes = []
     is_prime = [True] * (limit + 1)

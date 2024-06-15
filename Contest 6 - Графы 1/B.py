@@ -1,3 +1,6 @@
+# Есть ли цикл?
+
+
 class Peak:
     def __init__(self, color=0):
         self.color = color

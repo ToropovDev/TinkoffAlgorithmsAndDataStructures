@@ -13,9 +13,9 @@ def h(lets):
 
     counter = [pair for pair in counter if pair[1] != 0]
     if len(counter) == 0:
-        return result+result[::-1]
+        return result + result[::-1]
     else:
-        return result+counter[0][0]+result[::-1]
+        return result + counter[0][0] + result[::-1]
 
 
 n = int(input())

@@ -1,3 +1,4 @@
+# Самое дешевое ребро
 from math import log2
 
 
@@ -6,12 +7,12 @@ def build_sparse_table(n, parents):
     sparse_table = [[-1] * log_n for _ in range(n)]
 
     for i in range(n):
-        sparse_table[i][0] = parents[i-1]
+        sparse_table[i][0] = parents[i - 1]
 
     for j in range(1, log_n):
         for i in range(n):
-            if sparse_table[i][j-1] != -1:
-                sparse_table[i][j] = sparse_table[sparse_table[i][j-1]][j-1]
+            if sparse_table[i][j - 1] != -1:
+                sparse_table[i][j] = sparse_table[sparse_table[i][j - 1]][j - 1]
 
     return sparse_table
 
@@ -39,7 +40,7 @@ def lca(u, v, depth, sparse_table):
 def find_min_cost_path(n, edges, queries):
     adj_list = [[] for _ in range(n)]
     for i in range(1, n):
-        parent, cost = edges[i-1]
+        parent, cost = edges[i - 1]
         adj_list[i].append((parent, cost))
         adj_list[parent].append((i, cost))
 
@@ -82,7 +83,7 @@ def find_min_cost_path(n, edges, queries):
 
 
 n = int(input())
-edges = [tuple(map(int, input().split())) for _ in range(n-1)]
+edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
 m = int(input())
 queries = [tuple(map(int, input().split())) for _ in range(m)]
 

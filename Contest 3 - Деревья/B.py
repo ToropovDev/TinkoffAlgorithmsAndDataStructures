@@ -1,7 +1,7 @@
 # B-AVL?
 import sys
 
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10 ** 6)
 
 
 class Node:

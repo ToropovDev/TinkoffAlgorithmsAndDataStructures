@@ -1,3 +1,4 @@
+# Петя и CMS
 import sys
 
 

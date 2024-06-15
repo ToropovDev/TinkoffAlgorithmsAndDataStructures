@@ -22,13 +22,14 @@ for i in range(1, n):
 
 
 def query(x1, y1, x2, y2):
-    return s[x2][y2] - (s[x1 - 1][y2] if x1 > 0 else 0) - (s[x2][y1 - 1] if y1 > 0 else 0) + (s[x1 - 1][y1 - 1] if x1 > 0 and y1 > 0 else 0)
+    return s[x2][y2] - (s[x1 - 1][y2] if x1 > 0 else 0) - (s[x2][y1 - 1] if y1 > 0 else 0) + (
+        s[x1 - 1][y1 - 1] if x1 > 0 and y1 > 0 else 0)
 
 
 result = []
 for _ in range(k):
     x1, y1, x2, y2 = map(int, input().split())
-    result.append(query(x1-1, y1-1, x2-1, y2-1))
+    result.append(query(x1 - 1, y1 - 1, x2 - 1, y2 - 1))
 
 for elem in result:
     print(elem)

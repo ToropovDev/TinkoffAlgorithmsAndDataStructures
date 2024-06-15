@@ -2,7 +2,7 @@
 
 import sys
 
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10 ** 6)
 
 
 class TreeNode:
@@ -81,7 +81,6 @@ while queue:
         if distances[child.value] == -1:
             distances[child.value] = distances[current.value] + 1
             queue.append(child)
-
 
 print(height, d)
 print(*distances)

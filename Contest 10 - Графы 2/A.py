@@ -1,3 +1,6 @@
+# Система непересекающихся множеств
+
+
 class dsuNode:
     def __init__(self, v):
         self.parent = v
